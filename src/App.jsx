@@ -1,18 +1,53 @@
+
 import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [passengers] = useState([
-    { id: 1, name: "Passenger 1" },
-    { id: 2, name: "Passenger 2" },
-    { id: 3, name: "Passenger 3" }
+  const [passengers, setPassengers] = useState([
+    { id: 1, name: "Passenger 1", seat: null }
   ]);
 
   const [selectedPassenger, setSelectedPassenger] = useState(1);
 
+  // Add a passenger
+  function addPassenger() {
+    if (passengers.length < 9) {
+      const newPassenger = {
+        id: passengers.length + 1,
+        name: `Passenger ${passengers.length + 1}`,
+        seat: null
+      };
+
+      setPassengers([...passengers, newPassenger]);
+    }
+  }
+
+  // Remove the last passenger
+  function removePassenger() {
+    if (passengers.length > 1) {
+      const updatedPassengers = passengers.slice(0, -1);
+
+      setPassengers(updatedPassengers);
+
+      // If the selected passenger was removed,
+      // select the last remaining passenger.
+      if (selectedPassenger > updatedPassengers.length) {
+        setSelectedPassenger(updatedPassengers.length);
+      }
+    }
+  }
+
   return (
     <div className="container">
-      <h1>Select Passenger</h1>
+      <h1>Flight Passenger Selection</h1>
+
+      <div className="counter">
+        <button onClick={removePassenger}>−</button>
+
+        <h2>{passengers.length} Passengers</h2>
+
+        <button onClick={addPassenger}>+</button>
+      </div>
 
       <div className="passenger-list">
         {passengers.map((passenger) => (
@@ -27,13 +62,14 @@ function App() {
           >
             <h3>{passenger.name}</h3>
             <p>ID: {passenger.id}</p>
+            <p>Seat: {passenger.seat || "Not selected"}</p>
           </div>
         ))}
       </div>
 
-      <h2>
+      <h3>
         Currently Selected: Passenger {selectedPassenger}
-      </h2>
+      </h3>
     </div>
   );
 }
