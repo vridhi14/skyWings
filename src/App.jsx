@@ -1,30 +1,23 @@
-import Header from "./components/Header";
-import PassengerCard from "./components/PassengerCard";
-import "./App.css";
+import { useState } from "react";
 
 function App() {
+
+  const [count, setCount] = useState(1);
+
   return (
-    <div className="app">
-      <Header />
+    <div>
+      <h1>Passenger Selection</h1>
 
-      <main className="main-content">
-        <h1>Select your seats</h1>
+      <h2>Passengers: {count}</h2>
 
-        <PassengerCard
-          name="Angel"
-          seat="1A"
-        />
+      <button onClick={() => setCount(count + 1)}>
+        Add Passenger
+      </button>
 
-        <PassengerCard
-          name="Rahul"
-          seat="2B"
-        />
+      <button onClick={() => setCount(count - 1)}>
+        Remove Passenger
+      </button>
 
-        <PassengerCard
-          name="Priya"
-          seat="3C"
-        />
-      </main>
     </div>
   );
 }
