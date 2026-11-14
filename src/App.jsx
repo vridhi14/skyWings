@@ -1,23 +1,39 @@
 import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [passengers] = useState([
+    { id: 1, name: "Passenger 1" },
+    { id: 2, name: "Passenger 2" },
+    { id: 3, name: "Passenger 3" }
+  ]);
 
-  const [count, setCount] = useState(1);
+  const [selectedPassenger, setSelectedPassenger] = useState(1);
 
   return (
-    <div>
-      <h1>Passenger Selection</h1>
+    <div className="container">
+      <h1>Select Passenger</h1>
 
-      <h2>Passengers: {count}</h2>
+      <div className="passenger-list">
+        {passengers.map((passenger) => (
+          <div
+            key={passenger.id}
+            className={
+              selectedPassenger === passenger.id
+                ? "passenger-card active"
+                : "passenger-card"
+            }
+            onClick={() => setSelectedPassenger(passenger.id)}
+          >
+            <h3>{passenger.name}</h3>
+            <p>ID: {passenger.id}</p>
+          </div>
+        ))}
+      </div>
 
-      <button onClick={() => setCount(count + 1)}>
-        Add Passenger
-      </button>
-
-      <button onClick={() => setCount(count - 1)}>
-        Remove Passenger
-      </button>
-
+      <h2>
+        Currently Selected: Passenger {selectedPassenger}
+      </h2>
     </div>
   );
 }

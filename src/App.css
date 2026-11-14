@@ -56,3 +56,49 @@
     padding: 16px;
   }
 }
+
+/* Optional */
+div {
+  text-align: center;
+  margin-top: 100px;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  padding: 10px 25px;
+  margin: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+ /*  */
+
+
+.container {
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.passenger-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.passenger-card {
+  padding: 20px;
+  width: 180px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  background: white;
+}
+
+.passenger-card.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.passenger-card h3 {
+  margin-bottom: 8px;
+}
+
