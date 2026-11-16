@@ -4,7 +4,7 @@ A responsive flight seat selection application built with **React.js** that allo
 
 ## 🌐 Live Demo
 
-**Live Application:** https://sky-wings-two.vercel.app/
+**Live Application:** https://sky-wings-flight.vercel.app
 
 **GitHub Repository:** https://github.com/vridhi14/skyWings
 
